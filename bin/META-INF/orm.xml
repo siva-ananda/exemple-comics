@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+	version="2.0">
+	
+	<access>FIELD</access> <!--  l'injection se fait directement dans les propriétés sans passer par les setters -->
+	<!--  sinon on peut passer par les setters en utilisant PROPERTY -->
+	
+	<!-- déclaration de requête, à placer avant les entités -->
+	<named-query name="GetGenreByName">
+		<query>select g from GenreImpl g where lower(g.nom) = lower(?1)</query>
+	</named-query>
+	
+	
+	<!--  classe annotée -->
+	<entity class ="be.steformations.laura.java_data.comics.dao.beans.PersonnageImpl"/>
+	
+	
+	<!--  autre solution pour faire le mappage (plutôt que dans la classe GenreImpl) -->
+	<entity class="be.steformations.laura.java_data.comics.dao.beans.GenreImpl">
+		<table name="genres"></table>
+		<attributes> 
+			<id name="id"><!-- = nom de la propriété dans la classe java -->
+				<column name="num"/> <!--  à préciser car n'a pas le même nom dans la db -->
+			</id>
+			<basic name="nom" />
+			<one-to-many name="comics" mapped-by="genre"></one-to-many><!-- mapped-by = nom du many to one qui a obligatoirement été défini pour permettre la création du one to many -->
+		</attributes>
+	</entity>
+	
+	<entity class="be.steformations.laura.java_data.comics.dao.beans.AventureImpl" name="Recit">
+		<table name="aventures"/>
+		<attributes> 
+			<id name="id"/>
+			<basic name="titre" />
+		</attributes>
+	</entity>
+	
+	
+</entity-mappings>

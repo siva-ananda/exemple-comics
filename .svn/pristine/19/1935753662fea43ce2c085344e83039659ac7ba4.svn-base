@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    
+	<persistence-unit name="xxx">
+
+	    <!-- Eclipselink -->
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+		<class>XXX</class>
+		
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:xxx://xxx"/>
+			<property name="javax.persistence.jdbc.driver" value=""/>
+			<property name="javax.persistence.jdbc.user" value=""/>
+			<property name="javax.persistence.jdbc.password" value=""/>
+			<property name="eclipselink.logging.level" value="FINE"/>
+			
+		</properties>
+
+	</persistence-unit>
+	
+	<persistence-unit name="xxx">
+
+	    <!-- Hibernate -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<class>XXX</class>
+		
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:xxx://xxx"/>
+			<property name="javax.persistence.jdbc.driver" value=""/>
+			<property name="javax.persistence.jdbc.user" value=""/>
+			<property name="javax.persistence.jdbc.password" value=""/>
+			<property name="eclipselink.logging.level" value="FINE"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.XXXXX"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+			
+		</properties>
+
+	</persistence-unit>
+	
+</persistence>
